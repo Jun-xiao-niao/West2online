@@ -1,6 +1,5 @@
 package round2task1;
 
-import java.time.*;
 import static round2task3.CheckMailbox.checkMailbox;
 import static round2task3.Multithreading.multiThreading;
 
@@ -20,21 +19,22 @@ public class Test {
         System.out.println("\nPrint cat information");//打印被rua猫猫的信息
         myCatCafe.serveCustomer("Nanami", 5);//Nanami要rua五只猫
 
-        LocalDate localDate = LocalDate.now();
         System.out.println("\nPrint customers information");//打印今天的顾客信息
-        myCatCafe.rest(localDate);
+        myCatCafe.rest();
 
 
         //接下来测试多线程
         System.out.println("\nTesting multithreading:");
-        int arr1[]={1,3,5,7,9};
-        int arr2[]={2,4,6,8,10};
+        int[] arr1 = new int[]{1, 3, 5, 7, 9};
+        int[] arr2 = new int[]{2, 4, 6, 8, 10};
 
         multiThreading(arr1);
 
         try {
             Thread.sleep(50);
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         multiThreading(arr2);
 
@@ -42,10 +42,12 @@ public class Test {
         //测试正则表达式之前，先让多线程运行完
         try {
             Thread.sleep(1500);
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //测试正则表达式
-        System.out.println("\n\nTesting regular expressions" );
+        System.out.println("\n\nTesting regular expressions");
         System.out.println(checkMailbox("hd33322@nat123.com")); //ture
         System.out.println(checkMailbox("maksim.kim.82@d-link.ua")); //ture
         System.out.println(checkMailbox("vova_lazarev1969@jaagers.com")); //ture

@@ -91,7 +91,7 @@ class MyCatCafe implements CatCafe {
     @Override
     public void serveCustomer(String name, int customerRuaNumber) {
         try {
-            if (catList.isEmpty()) {
+            if (catNumber <= 0) {
                 throw new CatNotFoundException();
             } else {
                 Customer customer = new Customer(name, customerRuaNumber);
@@ -113,7 +113,8 @@ class MyCatCafe implements CatCafe {
     }
 
     @Override
-    public void rest(LocalDate localDate) {
+    public void rest() {
+        LocalDate localDate = LocalDate.now();
         for (Customer i : customerList) {
             //如果时间相同，就打印顾客信息
             if (i.getTime().equals(localDate)) {
